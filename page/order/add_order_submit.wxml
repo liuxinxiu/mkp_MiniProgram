@@ -1,0 +1,152 @@
+<!--page/order/add_order_submit.wxml-->
+<!-- <text>page/order/add_order_submit.wxml</text> -->
+
+
+    <!-- [cm_name] => 刘有钱   -》   用户名
+    [cm_mobile] => 13834561346   -》 -》手机号
+    [cm_address] => 蓝岛大厦7层手机中国 -》上门地址
+    [cm_attribution] => 8007, 8008, 8009  -》省市区三级ID
+    [fix_time_start] => 2018-07-20 10:00  -》预约开始时间
+    [fix_time_end] => 2018-07-20 14:00  -》预约结束时间
+    [fix_type] => 1   -》服务方式  1为上门  2为到店
+    [dv_brand_id] => 43  -》 预约品牌ID
+    [dv_device_id] => 33 -》预约型号ID
+    [dv_color_id] => 深空灰  -》 预约的颜色
+    [order_pay] => 2116  -》 订单总价格
+    [order_desc] => 提交订单案例  -》订单备注
+    [dv_problem] => Array   -》订单的故障项ID 多故障项和单故障项一样，都以数组方式 -->
+
+<import src="../../toast/toast.wxml"/>
+<wxs module="filters" src="../../wxs/toFix.wxs"></wxs>
+
+<view class="blank1"></view>
+<view class="page__bd" data-dv_brand_id="1001" data-dv_device_id="1002" data-dv_color_id="1003" data-order_pay="998" data-dv_problem="{{qid}}">
+   <view class="l-h-50 t-a-c">选择维修方式</view>
+   <view class="tabc t-a-c">
+      <view class="fl">上门维修</view>
+      <view class="fr">到店维修</view>
+   </view>
+   <view class="blank1"></view>
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp">
+            <view class="lkey t-a-l">选择服务地址</view>
+            <view class="rcon black t-a-r">{{modelName}}  </view>
+      </view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp">
+            <view class="lkey t-a-l">选择上门时间</view>
+            <view class="rcon black t-a-r {{colorSelectName==''?'gray':''}}" bindtap='outbtn'>
+            {{colorSelectName==''?'请选择机型颜色':colorSelectName}}  ></view>
+      </view>
+   </view>
+
+
+   <view class="orderbox p-t-15">
+      <view class="paraWarp">
+            <view class="lkey t-a-l">设备型号：</view>
+            <view class="rcon">苹果 iphone X 黑色</view>
+      </view>
+      <view class="blank5"></view>
+      <view class="paraWarp">
+            <view class="lkey t-a-l">故障详情：</view>
+            <view class="rcon">内屏显示异常</view>
+      </view>
+   </view>
+
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp">
+            <view class="lkey t-a-l">维修价格：</view>
+            <view class="rcon black t-a-r">￥550.00</view>
+      </view>
+      <view class="blank5"></view>
+      <view class="flexWarp">
+            <view class="lkey t-a-l">活动优惠：</view>
+            <view class="rcon black t-a-r">￥50</view>
+      </view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="paraWarp">
+            <view class="lkey t-a-l">备注信息：</view>
+            <view class="rcon"><input class="input"  type="number" placeholder="如您有特殊需求请留言" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+      </view>
+   </view>
+   <view class="blank50"></view>
+
+
+
+
+
+   <view class="acbox">
+      <view class="paraWarp l-h-50 tline m-b-0">
+         <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="请输入您的姓名" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+      </view>
+   </view>
+
+   <view class="acbox">
+      <view class="paraWarp l-h-50 tline m-b-0">
+         <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="请输入您的联系方式" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+      </view>
+   </view>
+
+   <view class="acbox">
+      <view class="flexWarp l-h-50">
+            <view class="tline t-a-l black">请选择预约时间</view>
+            <view class="rcon black t-a-r">>  </view>
+      </view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="paraWarp">
+            <view class="lkey t-a-l">门店地址：</view>
+            <view class="rcon">北京市朝阳区朝外大街10号阳山大厦7层</view>
+      </view>
+      <view class="blank5"></view>
+      <view class="paraWarp">
+            <view class="lkey t-a-l">服务时间：</view>
+            <view class="rcon">10:00-20:00</view>
+      </view>
+      <view class="blank5"></view>
+      <view class="paraWarp">
+            <view class="lkey t-a-l">联系电话：</view>
+            <view class="rcon">400-666-888</view>
+      </view>
+   </view>
+
+
+</view>
+<view class="blank50"></view>
+
+
+<block wx:if="{{maskShow}}">
+<!-- mask-layer -->
+<view class="mask-layer"></view>
+</block>
+
+<!-- select-color-->
+<view class="slide-bottom select-color {{aniStyle?'slideup':'slidedown'}}">
+   <view class="title">
+         <view class="sclose" bindtap="outbtn"></view>
+         <view class="stbox">机型配送选择</view>
+         <view class="sconfirm" style="display:none"></view>
+   </view>
+   <view class="sbox stab">
+         <view wx:for="{{colorArr}}" wx:key="*this" wx:for-index="index" wx:for-item="cItem" data-id="{{cItem.id}}" data-index="{{index}}" class="ntab {{cItem.checked?'on':''}}" bindtap="colorCheck">{{cItem.name}}</view>
+         <!-- <view class="ntab">白色</view>
+         <view class="ntab">银色</view>
+         <view class="ntab">橘红色</view>
+         <view class="ntab">天蓝色</view>
+         <view class="ntab">土豪金色</view> -->
+   </view>
+</view>
+
+
+<!--toast.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+
+

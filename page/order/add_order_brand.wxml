@@ -1,0 +1,63 @@
+<!--page/order/add_order_brand.wxml-->
+<!-- <text>page/order/add_order_brand.wxml</text> -->
+
+     <!-- brandId: "",
+     modelId: "",
+     brandName: "",
+     modelName: "",
+     colorArr: [] -->
+
+<wxs module="filters" src="../../wxs/toFix.wxs"></wxs>
+
+<!--导航条-->
+<view class="brand-navbar">
+  <!-- <view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}<view class="ico"></view></view> -->
+  <!-- wx:for="{{modellist}}" wx:key="*this" wx:for-index="index" wx:for-item="item" -->
+  <view wx:for="{{modellist}}" data-idx="{{index}}" wx:for-item="item" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.name}}<view class="ico"></view></view>
+</view>
+ 
+<view class="blank15"></view>
+<view class="brand-box">
+   <view class="allbox">
+         <!--头部-->
+         <view class="brand-title">
+               <view class="bg-left"></view>
+               <view class="bg-right"></view>
+               <view class="bg-center">手机</view>
+         </view>
+
+         <view class="blank15"></view>
+         <!--首页-->
+         <!-- <view class="brand-inner flexWarp" hidden="{{currentTab!==0}}"> -->
+            <!-- <navigator class="brand-model" url='{{mainpageUrl}}?brandId=43&&modelId=35&brandName=iPhone&modelName=iPhone X&colorArr=[{"id": "82","mid": "33","name": "银色","orderlist": "1","status": "1","mpid": "1"},{"id": "85","mid": "33","name": "深空灰","orderlist": "85","status": "1","mpid": "1"}]'>iPhone X</navigator> -->
+            <!-- <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator>
+            <navigator class="brand-model" url="{{mainpageUrl}}?id=1">iPhone X</navigator> -->
+         <!-- </view> -->
+
+         <view class="brand-inner flexWarp" data-name="{{item.name}} " hidden="{{currentTab!==index}}" wx:for="{{modellist}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
+             <!-- <navigator class="brand-model" url='{{mainpageUrl}}?brandId=43&&modelId=35&brandName=iPhone&modelName=iPhone X&colorArr=[{"id": "82","mid": "33","name": "银色","orderlist": "1","status": "1","mpid": "1"},{"id": "85","mid": "33","name": "深空灰","orderlist": "85","status": "1","mpid": "1"}]'>iPhone X</navigator>  -->
+          <navigator class="brand-model" wx:for="{{item.models}}" wx:key="*this" wx:for-index="m" wx:for-item="mItem" url='{{mainpageUrl}}?brandId={{item.bid}}&modelId={{mItem.id}}&brandName=111&modelName={{mItem.name}}&colorArr={{filters.jsonStringify(mItem.color_array)}}'>{{mItem.name}}</navigator>
+         </view>
+         
+         
+         <!--搜索-->
+         <!-- <view class="brand-inner" hidden="{{currentTab!==1}}">
+         tab_02
+         </view> -->
+         
+         <!--我-->
+         <!-- <view class="brand-inner" hidden="{{currentTab!==2}}">
+         tab_03
+         </view> -->
+   </view>
+</view>
+
+<!--toast.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>

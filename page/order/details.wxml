@@ -1,0 +1,128 @@
+<!--page/order/details.wxml-->
+<!-- <text>page/order/details.wxml</text> -->
+
+<view class="blank15"></view>
+<view class="page__bd page__bd_spacing">
+   <view class="orderbox">
+         <view class="blank15"></view>
+         <view class="or-line"></view>
+         <view class="or-dbox">
+               <view class="or-dot _a">
+                  <view class="or-dot-g"></view>
+               </view>
+               <view class="or-dot _b">
+                  <view class="or-dot-g"></view>
+               </view>
+               <view class="or-dot _c">
+                  <view class="or-dot-g"></view>
+               </view>
+               <view class="or-dot _d">
+                  <view class="or-dot-g greenbg"></view>
+               </view>
+         </view>
+         <view class="or-dbox">
+               <view class="or-ico _a on"></view>
+               <view class="or-ico _b failed"></view>
+               <view class="or-ico _c "></view>
+               <view class="or-ico _d "></view>
+         </view>
+         <view class="or-dbox">
+               <view class="or-text _a black">等待接单</view>
+               <view class="or-text _b">接单成功</view>
+               <view class="or-text _c">已经指派</view>
+               <view class="or-text _d">交易完成</view>
+         </view>
+         <view class="blank30"></view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp p-l-30">
+         <view class="imgf">
+               <image src='/images/engineer.png' style='width:44px; height:47px;'></image>
+         </view>
+         <view class="textb" style='width:70%; padding-left:15px;'>
+               <view class="gray"> 工程师</view>
+               <view class="text"> 高健</view>
+         </view>
+         <view class="telr fright p-t-10">
+               <image src='/images/tel-gray.png' style='width:21px; height:21px;'></image>
+         </view>
+      </view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp">
+            <view class="lkey p-l-30">魏涛：</view>
+            <view class="rcon black">18307869543</view>
+      </view>
+      <view class="paraWarp p-l-30">
+         上门地址：北京市通州区永顺镇常营天街西北路口爱尚二期高层12号楼三单元2105室
+      </view>
+   </view>
+
+
+   <view class="orderbox p-t-15">
+      <view class="paraWarp">
+            <view class="lkey">维修方式：</view>
+            <view class="rcon">到店维修</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">预约时间：</view>
+            <view class="rcon">2018-07-10 15:00</view>
+      </view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="paraWarp">
+            <view class="lkey">门店地址：</view>
+            <view class="rcon">北京市朝阳区朝外大街10号阳山大厦7层</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">服务时间：</view>
+            <view class="rcon">10:00-20:00</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">联系电话：</view>
+            <view class="rcon">400-666-888</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">设备型号：</view>
+            <view class="rcon">苹果iPhone X</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">故障详情：</view>
+            <view class="rcon">
+               <p>电池（充电故障）</p>
+               <p>音量键</p>
+            </view>
+      </view>
+      <view class="t-a-r f14px gray p-t-10">支付440.00元</view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="paraWarp">
+            <view class="lkey">下单时间：</view>
+            <view class="rcon">2018-07-10  12:30:57</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">订单编号：</view>
+            <view class="rcon">123333388669909998776</view>
+      </view>
+      <view class="paraWarp">
+            <view class="lkey">备注信息：</view>
+            <view class="rcon">尽快修复，谢谢！</view>
+      </view>
+   </view>
+
+   <view class="blank25"></view>
+   <view class="flexWarp">
+         <view class="lkey t-a-l l-h-30" style='width:20%; text-decoration: underline;'>
+               <navigator url="/page/index11/index?title=我是red&motto=我的新参数2" hover-class="changestyle">备份教程</navigator>
+         </view>
+         <view class="rcon t-a-r" style='width:80%;'>
+               <view class="btn black s5 r20 l-h-30 m-l-10">取消订单</view>
+               <view class="btn green s5 r20 l-h-30 m-l-10">返回首页</view>
+         </view>
+   </view>
+
+</view>

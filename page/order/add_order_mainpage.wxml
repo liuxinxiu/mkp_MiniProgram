@@ -1,0 +1,129 @@
+<!--page/order/add_order_mainpage.wxml-->
+<!-- <text>page/order/add_order_mainpage.wxml</text> -->
+
+    <!-- [cm_name] => 刘有钱   -》   用户名
+    [cm_mobile] => 13834561346   -》 -》手机号
+    [cm_address] => 蓝岛大厦7层手机中国 -》上门地址
+    [cm_attribution] => 8007, 8008, 8009  -》省市区三级ID
+    [fix_time_start] => 2018-07-20 10:00  -》预约开始时间
+    [fix_time_end] => 2018-07-20 14:00  -》预约结束时间
+    [fix_type] => 1   -》服务方式  1为上门  2为到店
+    [dv_brand_id] => 43  -》 预约品牌ID
+    [dv_device_id] => 33 -》预约型号ID
+    [dv_color_id] => 深空灰  -》 预约的颜色
+    [order_pay] => 2116  -》 订单总价格
+    [order_desc] => 提交订单案例  -》订单备注
+    [dv_problem] => Array   -》订单的故障项ID 多故障项和单故障项一样，都以数组方式 -->
+
+<import src="../../toast/toast.wxml"/>
+<wxs module="filters" src="../../wxs/toFix.wxs"></wxs>
+
+<view class="blank1"></view>
+<view class="page__bd" data-dv_brand_id="1001" data-dv_device_id="1002" data-dv_color_id="1003" data-order_pay="998" data-dv_problem="{{qid}}">
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp">
+            <view class="lkey t-a-l">维修型号</view>
+            <view class="rcon black t-a-r">{{modelName}}  ></view>
+      </view>
+   </view>
+
+   <view class="orderbox p-t-15">
+      <view class="flexWarp">
+            <view class="lkey t-a-l">机型选色</view>
+            <view class="rcon black t-a-r {{colorSelectName==''?'gray':''}}" bindtap='outbtn'>
+            {{colorSelectName==''?'请选择机型颜色':colorSelectName}}  ></view>
+      </view>
+   </view>
+
+   <view class="acbox">
+      <view class="flexWarp l-h-50">
+            <view class="tline t-a-l black">故障问题</view>
+      </view>
+   </view>
+
+
+   <!-- <view class="acbox">
+      <view class="flexWarp bline">
+            <view class='fl l-h-50'>屏幕显示/触摸故障</view>
+            <view class='add-ico'>
+               <view class="n">1</view>
+            </view>
+      </view>
+   </view> -->
+
+
+   <view wx:for="{{solution_lists}}" wx:key="*this" wx:for-index="qindex" wx:for-item="qItem" class="rowbox {{qItem.isshow?'isshow':''}}">
+         <view class="acbox">
+            <view class="flexWarp bline" data-qlen="{{qItem.qlen}}">
+                  <view class='fl l-h-50'>{{qItem.title}}</view>
+                  <view class='add-ico' data-isshow="{{qItem.isshow}}" data-qi="{{qindex}}" bindtap='showCheck'>
+                     <block wx:if="{{qItem.qlen > 0}}">
+                     <view class="n">{{qItem.qlen}}</view>
+                     </block>
+                  </view>
+            </view>
+         </view>
+         <view class="abbox" data-n="0" bindtap="getAllRects" data-selectname=".abbox .bdbox.on" data-setdataname="qid-line-qid">
+               <view wx:for="{{qItem.qData}}" wx:key="{{*this}}" wx:for-item="item" data-id="{{index}}" data-qi="{{qindex}}" data-qid="{{item.qId}}" data-oprice="{{item.oprice}}" data-qprice="{{item.qprice}}" data-checked="{{item.checked?'on':''}}" class="bdbox {{item.checked?'on':''}}" bindtap='checkboxCheck'>
+                  <view class="flexWarp l-h-50 bline">
+                        <view class='ico'></view>
+                        <view class='p-l-10'>{{item.title}}</view>
+                  </view>
+               </view>
+         </view>
+   </view> 
+   
+
+   <!-- <view class="acbox">
+      <view class="flexWarp l-h-50">
+            <view class="tline t-a-l">信号/WIFI/蓝牙故障</view>
+      </view>
+   </view> -->
+
+
+</view>
+<view class="blank50"></view>
+
+<!-- order-bottom -->
+<view class="order-bottom">
+      <view class="flexWarp">
+            <view class="fl">
+               <view class="blank3"></view>
+               <view class="p-l-25 p-t-5">
+                  <text class="red f20px">￥{{filters.toFix(qprice)}}</text>
+                  <text class="gray f12px p-l-10">已优惠￥{{filters.toFix(oprice-qprice)}}</text>
+               </view>
+               
+            </view>
+            <view class="fr green-bg l-h-50 t-a-c white"><navigator url="/page/order/add_order_submit?title=我是red&motto=我的新参数2" hover-class="changestyle">立即维修</navigator></view>
+      </view>
+</view>
+
+<block wx:if="{{maskShow}}">
+<!-- mask-layer -->
+<view class="mask-layer"></view>
+</block>
+
+<!-- select-color-->
+<view class="slide-bottom select-color {{aniStyle?'slideup':'slidedown'}}">
+   <view class="title">
+         <view class="sclose" bindtap="outbtn"></view>
+         <view class="stbox">机型配送选择</view>
+         <view class="sconfirm" style="display:none"></view>
+   </view>
+   <view class="sbox stab">
+         <view wx:for="{{colorArr}}" wx:key="*this" wx:for-index="index" wx:for-item="cItem" data-id="{{cItem.id}}" data-index="{{index}}" class="ntab {{cItem.checked?'on':''}}" bindtap="colorCheck">{{cItem.name}}</view>
+         <!-- <view class="ntab">白色</view>
+         <view class="ntab">银色</view>
+         <view class="ntab">橘红色</view>
+         <view class="ntab">天蓝色</view>
+         <view class="ntab">土豪金色</view> -->
+   </view>
+</view>
+
+
+<!--toast.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+

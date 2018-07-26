@@ -1,0 +1,53 @@
+/* page/order/add_order_brand.wxss */
+
+page{
+  /*display: flex;*/
+  flex-direction: column;
+  height: 100%;
+  background: #f1f2f8;
+  color: #131313;
+  font-size: 12px;
+}
+.brand-navbar{
+  /* flex: none;
+  display: flex; */
+  width: 170rpx;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  background: #e7e8f1;
+}
+.brand-navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 120rpx;
+  z-index: 100;
+}
+.brand-navbar .item.active{
+  background: #fff;
+  border-left:5px solid #050505;
+}
+/* .brand-navbar .item.active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #FFCC00;
+} */
+.brand-navbar .item .ico{ width: 15px; height: 15px; background: #f1f2f8; position: absolute; z-index: 102; right: -10px; top:43rpx;  transform: rotate(45deg); display: none}
+.brand-navbar .item.active .ico{ display: block}
+
+.brand-box{ margin-left: 170rpx; position: relative; z-index: 200;}
+.brand-box .allbox{width: 90%; margin: 0 auto;}
+.brand-box .allbox .brand-title .bg-left,
+.brand-box .allbox .brand-title .bg-right{ width: 50%; float: left; height: 28rpx;}
+.brand-box .allbox .brand-title .bg-left{ background: linear-gradient(to left, #fff, 76%, #f1f2f8)}
+.brand-box .allbox .brand-title .bg-right{ background: linear-gradient(to right, #fff, 76%, #f1f2f8)}
+
+.brand-box .allbox .brand-title .bg-center{ position: absolute; z-index: 208; top: 0px; left: 50%; margin-left: -40rpx; width: 80rpx; height: 28rpx; background: #f1f2f8; text-align: center;}
+.brand-box .brand-inner {  margin-left:-3.333%}
+.brand-box .brand-inner .brand-model{ width: 29%; margin-left:4.333%;margin-bottom:4.333%; text-align: center; height: 136rpx; line-height: 136rpx; background: #fff; }

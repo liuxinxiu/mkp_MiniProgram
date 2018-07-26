@@ -1,0 +1,221 @@
+
+<!--toast.wxml-->
+<import src="../../toast/toast.wxml"/>
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
+
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 51}}px" bindchange="bindChange">
+  <!-- frag01 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+      <!-- 列表 -->
+      <view class="themes-list">
+
+
+
+
+<!--index.wxml-->
+<view class="page">
+    <!-- <view class="page__hd page__bd_spacing">
+        <view class="page__title">Button</view>
+        <view class="page__desc">按钮，WeUI采用小程序原生的按钮为主体，加入一些间距的样式。 </view>
+        <view class="weui-cells__title p-l-0">带说明的列表项</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">标题文字</view>
+                <view class="weui-cell__ft">说明文字</view>
+            </view>
+        </view>
+    </view> -->
+
+    <view class='blank10'></view>
+    <view class="page__bd page__bd_spacing">
+      <view class="topbox">
+         <view class="f12px fleft">您当前的手机型号：三星S7</view>
+         <view class="f12px fright" bindtap='tel'>
+         <image class='tel' mode='aspectFit' src='/images/tel.jpg' style="width:55px; height:18px;"></image>
+         </view>
+      </view>
+      <view class='blank10'></view>
+
+      <!--swiper-container-->
+      <view class="swiper-container">
+        <swiper autoplay="auto" interval="5000" duration="500" current="{{swiperCurrent}}" circular="{{swiperCircular}}" bindchange="swiperChange" class="swiper">
+          <block wx:for="{{picArr}}" wx:key="*this" wx:for-index="sindex" wx:for-item="sitem">
+            <swiper-item>
+              <image src="{{sitem.pic_url}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      
+        <view class="dots">
+          <block wx:for="{{slider}}" wx:key="unique">
+            <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+          </block>
+        </view>
+      </view>
+      <!--swiper-container-->
+      <view class='blank20'></view>
+
+      <view class="guide">
+             <image style="width: {{imagewidth}}px; height:25px;"  src="/images/mkp__07.jpg" data-mpadding="30" mode="aspectFill" bindload="imageLoad"></image>
+      </view>
+      <view class='blank20'></view>
+
+       <!-- <button class="weui-btn" type="primary">极速下单</button> -->
+       <view class="add_order_btn">
+             <navigator url="/page/order/add_order_brand?title=我是red&motto=我的新参数2" hover-class="changestyle">
+             <image style="width: {{imagewidth}}px; height: 80px;"  src="/images/add_order_btn.gif" data-mpadding="30" mode="aspectFill" bindload="imageLoad"></image>
+            </navigator>
+            
+      </view> 
+      <view class='blank20'></view>
+
+      <view class='m-b-10'>热门故障</view>
+      <view class='malfunction'>
+         <view class='inner'>
+               <view class='box {{item.className}}' wx:for="{{solutionHot}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
+                  <navigator url="{{mainpageUrl}}?brandId={{item.m_brand_id}}&modelId={{item.m_model_id}}&brandName={{item.m_brand_name}}&modelName={{item.m_model_name}}&colorArr={{filters.jsonStringify(item.color_array)}}" hover-class="changestyle">
+                     <view class='name'>{{item.m_model_name}}</view>
+                     <view class='des'>{{item.p_solution_name}}</view>
+                     <view class='price'>¥ 200</view>
+                  </navigator>
+               </view>
+
+               <!-- <view class='box co-orange'>
+                  <navigator url="/page/index11/index?title=我是red&motto=我的新参数2" hover-class="changestyle">
+                  <view class='name'>iphone 6</view>
+                  <view class='des'>续航时间短</view>
+                  <view class='price'>¥ 170</view>
+                  </navigator>
+               </view>
+
+               <view class='box co-gray'>
+                  <navigator url="/page/index11/index?title=我是red&motto=我的新参数2" hover-class="changestyle">
+                  <view class='name'>iphone 6</view>
+                  <view class='des'>续航时间短</view>
+                  <view class='price'>¥ 170</view>
+                  </navigator>
+               </view>
+
+               <view class='box co-orange'>
+                  <navigator url="/page/index11/index?title=我是red&motto=我的新参数2" hover-class="changestyle">
+                  <view class='name'>iphone 6</view>
+                  <view class='des'>续航时间短</view>
+                  <view class='price'>¥ 170</view>
+                  </navigator>
+               </view>
+
+               <view class='box co-gray'>
+                  <navigator url="/page/index11/index?title=我是red&motto=我的新参数2" hover-class="changestyle">
+                  <view class='name'>iphone 6</view>
+                  <view class='des'>续航时间短</view>
+                  <view class='price'>¥ 170</view>
+                  </navigator>
+               </view>
+
+               <view class='box co-blue'>
+                  <navigator url="/page/index11/index?title=我是red&motto=我的新参数2" hover-class="changestyle">
+                  <view class='name'>iphone 6</view>
+                  <view class='des'>续航时间短</view>
+                  <view class='price'>¥ 170</view>
+                  </navigator>
+               </view> -->
+         </view>
+      </view>
+   </view>
+   <!-- page__bd end -->
+
+   <view class="page_bottom" style='display:none'>
+      <view class="sbox">
+            <view class="liney"></view>
+            <view class="page_btn btnl on">
+               <view class="inner"><text>首页</text></view>
+            </view>
+            <view class="page_btn btnr">
+               <view class="inner">查询订单</view>
+            </view>
+
+         </view>
+   </view>
+</view>
+
+
+
+
+
+
+
+
+
+      </view>
+    </scroll-view>
+  </swiper-item>
+ 
+  <!-- frag02 -->
+  <swiper-item style="background-color:#f3f3f3">
+    <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+      <!-- 列表 -->
+      <view class="m-b-20">
+            <view class='order-list'>
+               <view class='obox'>
+                  <navigator url="/page/order/details?id=我是2" hover-class="changestyle">
+                  <view class='name'>
+                     <view class="fleft">订单编号：11832298556658</view>
+                     <view class="fright green">等待接单</view>
+                  </view>
+                  <view class='desmodel'>苹果 iPhone X 黑色</view>
+                  <view class='desbox '>
+                     <view class='des'>屏幕其他问题（非配件本身原因）</view>
+                     <view class='des'>自动调节亮度失灵</view>
+                  </view>
+                  <view class='rbottom'>共计2件商品  合计<text class='price'>¥680.00</text></view>
+                  </navigator>
+               </view>
+               <!-- obox -->
+
+
+               <view class='obox'>
+                  <navigator url="/page/order/details?id=我是2&submit=ok" hover-class="changestyle">
+                  <view class='name'>
+                     <view class="fleft">订单编号：11832298556658</view>
+                     <view class="fright green">等待接单</view>
+                  </view>
+                  <view class='desmodel'>苹果 iPhone X 黑色</view>
+                  <view class='desbox '>
+                     <view class='des'>屏幕其他问题（非配件本身原因）</view>
+                     <view class='des'>自动调节亮度失灵</view>
+                  </view>
+                  <view class='rbottom'>共计2件商品  合计<text class='price'>¥680.00</text></view>
+                  </navigator>
+               </view>
+               <!-- obox -->
+
+
+            </view>
+
+
+
+
+
+
+
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+ 
+<!--tab_top-->
+<view class="swiper-tab">
+   <view class="liney"></view>
+  <view class="swiper-tab-list {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">
+    <view class="swiper-tab-img" style='float:left;'><image class="img" src="{{currentTab==0 ? iconlists[0].focus: iconlists[0].normal}}"></image></view>
+    <view style='float:left; padding-left:8px; white-space:nowrap;'>首页</view>
+  </view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">
+     <view class="swiper-tab-img" style='float:left'><image class="img" src="{{currentTab==1 ? iconlists[1].focus: iconlists[1].normal}}"></image></view>
+     <view style='float:left; padding-left:8px; white-space:nowrap;'>查询订单</view>
+  </view>
+</view>
+
+

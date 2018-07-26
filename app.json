@@ -1,0 +1,21 @@
+{
+  "pages":[
+   "page/index/index",
+   "page/order/index",
+   "page/order/details",
+   "page/order/add_order_brand",
+   "page/order/add_order_mainpage",
+   "page/order/add_order_submit",
+   "page/order/add_order_succeed",
+   "page/help/data_backup_apple",
+   "page/help/data_backup_android",
+   "page/index11/index",
+   "page/logs/logs"
+   ],
+   "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#38d530",
+      "navigationBarTitleText": "手机维修 摩咔派",
+      "navigationBarTextStyle": "white"
+   }
+}

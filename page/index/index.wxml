@@ -1,4 +1,16 @@
 
+
+<view>
+   <!-- <button wx:if="{{!hasUserInfo && canIUse}}" bindtap="bindUserLogin"> 立即登录 </button> -->
+   <button class='wx-login' open-type="getUserInfo" wx:if="{{!hasUserInfo && canIUse}}" bindgetuserinfo="getUserInfo">微信授权一键登录</button>
+   <block wx:else open-type="getUserInfo">
+    <!-- <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+   <text class="userinfo-nickname">{{userInfo.nickName}}</text>  -->
+
+
+
+
+
 <!--toast.wxml-->
 <import src="../../toast/toast.wxml"/>
 <template is="wxToast" data="{{...wxToastConfig}}"></template>
@@ -218,4 +230,18 @@
   </view>
 </view>
 
+
+
+
+
+
+
+
+
+
+
+
+
+   </block>
+</view>
 

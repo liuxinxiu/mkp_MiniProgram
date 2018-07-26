@@ -39,6 +39,8 @@
 .pad20{padding: 20px;}
 .pad30{padding: 30px;}
 
+.ppbox{padding: 5px 20px 20px 20px;}
+
 .fleft{ float: left}
 .fright{ float: right}
 

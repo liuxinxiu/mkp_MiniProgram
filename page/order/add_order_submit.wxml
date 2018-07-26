@@ -17,104 +17,165 @@
     [dv_problem] => Array   -》订单的故障项ID 多故障项和单故障项一样，都以数组方式 -->
 
 <import src="../../toast/toast.wxml"/>
-<wxs module="filters" src="../../wxs/toFix.wxs"></wxs>
 
 <view class="blank1"></view>
 <view class="page__bd" data-dv_brand_id="1001" data-dv_device_id="1002" data-dv_color_id="1003" data-order_pay="998" data-dv_problem="{{qid}}">
    <view class="l-h-50 t-a-c">选择维修方式</view>
    <view class="tabc t-a-c">
-      <view class="fl">上门维修</view>
-      <view class="fr">到店维修</view>
+      <view class="fl {{currentTab==0 ? 'on' : ''}}" data-idx="0" bindtap="navbarTap"><view class="dtext">上门维修</view></view>
+      <view class="fr {{currentTab==1 ? 'on' : ''}}" data-idx="1" bindtap="navbarTap"><view class="dtext">到店维修</view></view>
    </view>
    <view class="blank1"></view>
 
-   <view class="orderbox p-t-15">
-      <view class="flexWarp">
-            <view class="lkey t-a-l">选择服务地址</view>
-            <view class="rcon black t-a-r">{{modelName}}  </view>
-      </view>
+   <!-- pbox -->
+   <view class="pbox" style="{{currentTab==0 ? 'display:block' : 'display:none'}}">
+         <view class="orderbox p-t-15" style="margin-bottom:10px;">
+            <view class="flexWarp">
+                  <view class="lkey t-a-l">选择服务地址</view>
+                  <view class="rcon black t-a-r">{{modelName}}  </view>
+            </view>
+         </view>
+         <view class="abbox" style="display:none">
+               <view class="acbox">
+                  <view class="paraWarp l-h-50 tline m-b-0">
+                     <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="姓名" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+                  </view>
+               </view>
+
+               <view class="acbox">
+                  <view class="paraWarp l-h-50 tline m-b-0">
+                     <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="联系方式" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+                  </view>
+               </view>
+
+               <view class="acbox">
+                  <view class="paraWarp l-h-50 tline m-b-0">
+                     <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="详细地址" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+                  </view>
+               </view>
+         </view>
+
+         <view class="orderbox">
+            <view class="flexWarp">
+                  <view class="lkey t-a-l">选择上门时间</view>
+                  <view class="rcon black t-a-r {{colorSelectName==''?'gray':''}}" bindtap='outbtn'>
+                  {{colorSelectName==''?'请选择机型颜色':colorSelectName}}  ></view>
+            </view>
+         </view>
+         <view class="blank10"></view>
+
+
+         <view class="orderbox p-t-15">
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">设备型号：</view>
+                  <view class="rcon">苹果 iphone X 黑色</view>
+            </view>
+            <view class="blank10"></view>
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">故障详情：</view>
+                  <view class="rcon">内屏显示异常</view>
+            </view>
+         </view>
+         <view class="blank10"></view>
+
+
+         <view class="orderbox p-t-15">
+            <view class="flexWarp">
+                  <view class="lkey t-a-l">维修价格：</view>
+                  <view class="rcon black t-a-r">￥550.00</view>
+            </view>
+            <view class="blank10"></view>
+            <view class="flexWarp">
+                  <view class="lkey t-a-l">活动优惠：</view>
+                  <view class="rcon black t-a-r">￥50</view>
+            </view>
+         </view>
+         <view class="blank10"></view>
+
+         <view class="orderbox p-t-15">
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">备注信息：</view>
+                  <view class="rcon"><input class="input2"  type="number" placeholder="如您有特殊需求请留言" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+            </view>
+         </view>
+         <view class="blank10"></view>
    </view>
 
-   <view class="orderbox p-t-15">
-      <view class="flexWarp">
-            <view class="lkey t-a-l">选择上门时间</view>
-            <view class="rcon black t-a-r {{colorSelectName==''?'gray':''}}" bindtap='outbtn'>
-            {{colorSelectName==''?'请选择机型颜色':colorSelectName}}  ></view>
-      </view>
-   </view>
+
+   <!-- pbox -->
+   <view class="pbox" style="{{currentTab==1 ? 'display:block' : 'display:none'}}">
+         <view class="acbox">
+            <view class="paraWarp l-h-50 tline m-b-0">
+               <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="请输入您的姓名" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+            </view>
+         </view>
+
+         <view class="acbox">
+            <view class="paraWarp l-h-50 tline m-b-0">
+               <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="请输入您的联系方式" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+            </view>
+         </view>
+
+         <view class="acbox">
+            <view class="flexWarp l-h-50">
+                  <view class="tline t-a-l black">请选择预约时间</view>
+                  <view class="rcon black t-a-r">>  </view>
+            </view>
+         </view>
+
+         <view class="orderbox p-t-15">
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">门店地址：</view>
+                  <view class="rcon">北京市朝阳区朝外大街10号阳山大厦7层</view>
+            </view>
+            <view class="blank5"></view>
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">服务时间：</view>
+                  <view class="rcon">10:00-20:00</view>
+            </view>
+            <view class="blank5"></view>
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">联系电话：</view>
+                  <view class="rcon">400-666-888</view>
+            </view>
+         </view>
+         <view class="blank10"></view>
 
 
-   <view class="orderbox p-t-15">
-      <view class="paraWarp">
-            <view class="lkey t-a-l">设备型号：</view>
-            <view class="rcon">苹果 iphone X 黑色</view>
-      </view>
-      <view class="blank5"></view>
-      <view class="paraWarp">
-            <view class="lkey t-a-l">故障详情：</view>
-            <view class="rcon">内屏显示异常</view>
-      </view>
-   </view>
+         <view class="orderbox p-t-15">
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">设备型号：</view>
+                  <view class="rcon">苹果 iphone X 黑色</view>
+            </view>
+            <view class="blank5"></view>
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">故障详情：</view>
+                  <view class="rcon">内屏显示异常</view>
+            </view>
+         </view>
+         <view class="blank10"></view>
 
 
-   <view class="orderbox p-t-15">
-      <view class="flexWarp">
-            <view class="lkey t-a-l">维修价格：</view>
-            <view class="rcon black t-a-r">￥550.00</view>
-      </view>
-      <view class="blank5"></view>
-      <view class="flexWarp">
-            <view class="lkey t-a-l">活动优惠：</view>
-            <view class="rcon black t-a-r">￥50</view>
-      </view>
-   </view>
+         <view class="orderbox p-t-15">
+            <view class="flexWarp">
+                  <view class="lkey t-a-l">维修价格：</view>
+                  <view class="rcon black t-a-r">￥550.00</view>
+            </view>
+            <view class="blank5"></view>
+            <view class="flexWarp">
+                  <view class="lkey t-a-l">活动优惠：</view>
+                  <view class="rcon black t-a-r">￥50</view>
+            </view>
+         </view>
+         <view class="blank10"></view>
 
-   <view class="orderbox p-t-15">
-      <view class="paraWarp">
-            <view class="lkey t-a-l">备注信息：</view>
-            <view class="rcon"><input class="input"  type="number" placeholder="如您有特殊需求请留言" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
-      </view>
-   </view>
-   <view class="blank50"></view>
-
-
-
-
-
-   <view class="acbox">
-      <view class="paraWarp l-h-50 tline m-b-0">
-         <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="请输入您的姓名" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
-      </view>
-   </view>
-
-   <view class="acbox">
-      <view class="paraWarp l-h-50 tline m-b-0">
-         <view class="lkey t-a-l black l-h-50"><input class="input"  type="number" placeholder="请输入您的联系方式" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
-      </view>
-   </view>
-
-   <view class="acbox">
-      <view class="flexWarp l-h-50">
-            <view class="tline t-a-l black">请选择预约时间</view>
-            <view class="rcon black t-a-r">>  </view>
-      </view>
-   </view>
-
-   <view class="orderbox p-t-15">
-      <view class="paraWarp">
-            <view class="lkey t-a-l">门店地址：</view>
-            <view class="rcon">北京市朝阳区朝外大街10号阳山大厦7层</view>
-      </view>
-      <view class="blank5"></view>
-      <view class="paraWarp">
-            <view class="lkey t-a-l">服务时间：</view>
-            <view class="rcon">10:00-20:00</view>
-      </view>
-      <view class="blank5"></view>
-      <view class="paraWarp">
-            <view class="lkey t-a-l">联系电话：</view>
-            <view class="rcon">400-666-888</view>
-      </view>
+         <view class="orderbox p-t-15">
+            <view class="paraWarp">
+                  <view class="lkey t-a-l">备注信息：</view>
+                  <view class="rcon"><input class="input2"  type="number" placeholder="如您有特殊需求请留言" placeholder-style="color: #a9a9a9" bindinput="listenerPhoneInput" /></view>
+            </view>
+         </view>
+         <view class="blank10"></view>
    </view>
 
 
@@ -142,6 +203,23 @@
          <view class="ntab">天蓝色</view>
          <view class="ntab">土豪金色</view> -->
    </view>
+</view>
+
+
+
+<!-- order-bottom -->
+<view class="order-bottom">
+      <view class="flexWarp">
+            <view class="fl">
+               <view class="blank3"></view>
+               <view class="p-l-25 p-t-5">
+                  <text class="red f20px">￥</text>
+                  <text class="gray f12px p-l-10">已优惠￥</text>
+               </view>
+               
+            </view>
+            <view class="fr green-bg l-h-50 t-a-c white"><navigator url="/page/order/add_order_succeed?title=我是red&motto=我的新参数2" hover-class="changestyle">立即维修</navigator></view>
+      </view>
 </view>
 
 

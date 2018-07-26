@@ -5,9 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+     navbar: ['首页', '搜索', '我'],
+     currentTab: 0,
+     mainpageUrl: "/page/order/add_order_mainpage"
   },
 
+  navbarTap: function (e) {
+     this.setData({
+        currentTab: e.currentTarget.dataset.idx
+     })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

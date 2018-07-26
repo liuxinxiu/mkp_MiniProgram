@@ -1,2 +1,27 @@
 <!--page/help/data_backup_android.wxml-->
-<text>page/help/data_backup_android.wxml</text>
+<!-- <text>page/help/data_backup_android.wxml</text> -->
+
+<view class="page__bd ppbox">
+    <text class="bold f16px">一、工具软件</text>
+    <text>因手机数据备份软件较多，现以360手机助手为例，在电脑上安装360手机助手；</text>
+    <text>1、打开360手机助手（这里也可以用其他助手，如91助手等），插上数据线，连上手机，点击下方的“还未备份过”按钮。</text>
+    <view>
+        <image class="img" src="http://www.mochup.com/front/assets/images/andro01.jpg" mode="aspectFill"></image>
+    </view>
+    <text>2、选择你所需要备份的联系人、短信、通话记录、应用等，可以选择更多设置确认备份位置，这里选择默认，然后继续选择“一键备份”。</text>
+    <view>
+        <image class="img" src="http://www.mochup.com/front/assets/images/andro02.jpg" mode="aspectFill"></image>
+    </view>
+    <text>3、等待备份完成，显示“恭喜您，数据备份成功”</text>
+    <view>
+        <image class="img" src="http://www.mochup.com/front/assets/images/andro03.jpg" mode="aspectFill"></image>
+    </view>
+    <text>4、如果手机数据信息遗失的话，可以选择“一键恢复”选项，选择备份好的备份文件，进行还原回复以前的短信、联系人及通话记录等。</text>
+    <view>
+        <image class="img" src="http://www.mochup.com/front/assets/images/andro04.jpg" mode="aspectFill"></image>
+    </view>
+    <text>5、图片及其它数据备份，可选择要备份的数据，点导出，选择存储路径即可。</text>
+    <view>
+        <image class="img" src="http://www.mochup.com/front/assets/images/andro05.jpg" mode="aspectFill"></image>
+    </view>
+</view>

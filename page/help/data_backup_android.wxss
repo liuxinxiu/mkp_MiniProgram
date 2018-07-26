@@ -1,1 +1,4 @@
 /* page/help/data_backup_android.wxss */
+
+.page__bd.ppbox text{ color: #7b7b7b}
+.page__bd.ppbox view image{ margin: 10px 0px;}

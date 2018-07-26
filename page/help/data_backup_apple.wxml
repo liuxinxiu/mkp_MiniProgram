@@ -1,2 +1,42 @@
 <!--page/help/data_backup_apple.wxml-->
-<text>page/help/data_backup_apple.wxml</text>
+<!-- <text>page/help/data_backup_apple.wxml</text> -->
+
+<view class="page__bd ppbox">
+   <text class="bold f16px">一、iTunes备份</text>
+   <text>1、在电脑中下载安装iTunes，点击菜单栏旁边的手机按钮，如下图所示：</text>
+
+<view>
+      <image class="img" src="http://www.mochup.com/front/assets/images/ipnohe01.jpg" mode="aspectFill"></image>
+</view>
+
+   <text>2、进入手机信息界面后可以看到手机相关信息，点击右边“立即备份”按钮即可</text>
+
+<view>
+         <image class="img" src="http://www.mochup.com/front/assets/images/ipnohe02.jpg" mode="aspectFill"></image>
+</view>
+
+   <text class="bold f16px">二、第三方助手备份（这里以PP助手为例进行备份）</text>
+   <text>1、PP助手的操作比较简单，打开PP助手后会看到手机相关信息，找到左边的“备份还原”</text>
+
+   <view>
+         <image class="img" src="http://www.mochup.com/front/assets/images/ipnohe03.jpg" mode="aspectFill"></image>
+   </view>
+
+   <text>2、备份分为全新备份和增量备份，如果是第一次使用PP助手进行备份的话可选择全新备份，如果曾经用PP助手进行过备份可选择增量备份。</text>
+
+   <view>
+         <image class="img" src="http://www.mochup.com/front/assets/images/ipnohe04.jpg" mode="aspectFill"></image>
+   </view>
+
+   <text class="bold f16px">三、iCloud备份（由于数据量较大请在WiFi环境下备份）</text>
+   <text>1、ios10系统以上的用户iCloud在设置最上方，点击进入找到iCloud</text>
+   <text>2、向下滑动找到iCloud云备份，选择开启并立即备份即可。</text>
+   <view>
+   <image class="img" src="http://www.mochup.com/front/assets/images/ipnohe05.jpg" mode="aspectFill"></image>
+   </view>
+         
+   <text class="bold f16px">>总结</text>
+   <text>以上三种备份方式各有优点，最完美最安全就是苹果自带的iTunes备份，但缺点是电脑必须下载iTunes才可使用，而iTunes有些地方 不太适用于国人的操作习惯所以对于新手来说可能不是很方便。其次是第三方软件助手，如PP助手，iTools，爱思助手等等都可以对
+      iPhone进行备份，下载也比较简单，缺点也是需要在电脑上才可进行备份，最后是用iPhone的iCloud备份，优点是可以在手机上就 可以备份，不需要链连接电脑，但缺点就是普通用户的iCloud的云存储空间只有5GB，如果内容较多还需要单独购买云存储空间。
+   </text>
+</view>

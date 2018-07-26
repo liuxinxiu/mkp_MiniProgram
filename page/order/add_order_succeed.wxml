@@ -1,2 +1,24 @@
 <!--page/order/add_order_succeed.wxml-->
-<text>page/order/add_order_succeed.wxml</text>
+<!-- <text>page/order/add_order_succeed.wxml</text> -->
+
+<view class="page__bd">
+   <view class="imgbox">
+      <view class="imgbg"></view>
+      <view class="l-h-30 t-a-c f18px">下单成功</view>
+      <view class="l-h-20 t-a-c f12px gray">订单提交成功，等待派单！</view>
+   </view>
+   <view class="blank50"></view>
+   <view class="btnbox t-a-c">
+      <view class="navigator">
+      <navigator url="/page/order/add_order_succeed?title=我是red&motto=我的新参数2" hover-class="changestyle">返回首页</navigator>
+      </view>
+
+      <view class="navigator on">
+      <navigator url="/page/order/add_order_succeed?title=我是red&motto=我的新参数2" hover-class="changestyle">订单详情</navigator>
+      </view>
+      
+   </view>
+   <view class="botbox">
+   <navigator url="/page/help/data_backup_android" hover-class="changestyle">数据备份</navigator>
+   </view>
+</view>
